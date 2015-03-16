@@ -12,9 +12,6 @@ namespace APM.Model.DAL
         //Fält
         private static string _connectionString; // Sträng med information som används för att ansluta till "SQL Server"-databasen
 
-
-
-
        //Konstruktorer
         static DALBase() // Initierar statiskt data, Konstruktorn anropas automatiskt innan första instansen skapas eller innan någon statisk medlem används
         {

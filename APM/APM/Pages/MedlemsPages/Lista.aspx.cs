@@ -9,13 +9,12 @@ namespace APM.Pages.MedlemsPages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Visar eventuella meddelanden lagrade i de temporära sessionsvariablerna.
+            // Visar meddelanden med text att man lyckats lägga till meddlem,  med andra ord visar text lagrade i de temporära sessionsvariablerna
             SuccessMessageLiteral.Text = Page.GetTempData("SuccessMessage") as string;
             SuccessMessagePanel.Visible = !String.IsNullOrWhiteSpace(SuccessMessageLiteral.Text);
         }
 
-        // Hämtar alla kunde i databasen.
-        public IEnumerable<APM.Model.Member> MemberListView_GetData()
+        public IEnumerable<APM.Model.Member> MemberListView_GetData() // Hämtar alla kunde i databasen
         {
             try
             {

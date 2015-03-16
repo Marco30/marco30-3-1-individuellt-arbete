@@ -1,7 +1,7 @@
 ﻿using System.Web.UI;
 
 
-namespace APM.App_Infrastructure
+namespace APM
 {
     // Publik statisk klass som hämtar och lagrar meddelanden
     public static class PageExtensions

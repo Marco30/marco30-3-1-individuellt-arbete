@@ -25,7 +25,7 @@ namespace APM.Model
         #region Member
 
 
-      
+     
 
         public void SaveMember(Member member) // Sparar en medlem i databasen.
         {
@@ -56,7 +56,7 @@ namespace APM.Model
             return MemberDAL.GetMemberById(memberId);
         }
 
-
+ 
         public IEnumerable<Member> GetMembers()    // Hämtar alla medlemmar ur databasen.
         {
             return MemberDAL.GetMembers();

@@ -10,7 +10,7 @@ namespace APM.Model.DAL
     public class MemberDAL : DALBase
     {
 
-  
+        #region CRUD-metoder
 
         public IEnumerable<Member> GetMembers()// Hämtar alla medlemmar som finns i databasen
         {
@@ -276,4 +276,6 @@ namespace APM.Model.DAL
             }
         }
 
+        
+    }
 }
