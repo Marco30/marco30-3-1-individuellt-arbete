@@ -1,0 +1,23 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="APM.Site" ViewStateMode="Disabled"%>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>
+        <asp:ContentPlaceHolder ID="TitleHolder" runat="server">
+           Active Power Movement
+        </asp:ContentPlaceHolder>
+    </title>
+    <link href="~/Content/Style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <div id="main">
+            <asp:ContentPlaceHolder ID="MainHolder" runat="server" />
+        </div>
+    </div>
+    </form>
+</body>
+</html>
