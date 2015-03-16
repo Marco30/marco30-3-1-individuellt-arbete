@@ -22,10 +22,13 @@ namespace APM.Model
         }
 
 
-        #region Member
-
-
      
+
+
+        public void DeleteMember(int memberId)// Tar bort spesifik medlem ur databasen.
+        {
+            MemberDAL.DeleteMember(memberId);
+        }
 
         public void SaveMember(Member member) // Sparar en medlem i databasen.
         {
@@ -46,7 +49,7 @@ namespace APM.Model
             }
             else //Sparar medlem med andra ord uppdateras en befintlig medlems infromation
             {
-                //MemberDAL.UpdateMember(member);
+                MemberDAL.UpdateMember(member);
             }
         }
 
@@ -62,8 +65,7 @@ namespace APM.Model
             return MemberDAL.GetMembers();
         }
 
-        #endregion
-
+   
     }
 
 }

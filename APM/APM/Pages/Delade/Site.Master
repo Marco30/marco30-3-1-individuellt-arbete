@@ -9,7 +9,7 @@
            Active Power Movement
         </asp:ContentPlaceHolder>
     </title>
-    <link href="~/Content/Style.css" rel="stylesheet" type="text/css"/>
+    <link href="~/CSS/Style.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
     <form id="form1" runat="server">

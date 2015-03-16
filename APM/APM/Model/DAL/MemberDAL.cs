@@ -10,7 +10,7 @@ namespace APM.Model.DAL
     public class MemberDAL : DALBase
     {
 
-        #region CRUD-metoder
+        
 
         public IEnumerable<Member> GetMembers()// Hämtar alla medlemmar som finns i databasen
         {
@@ -276,6 +276,74 @@ namespace APM.Model.DAL
             }
         }
 
-        
+        // Uppdaterar en medlems uppgifter i tabellen Medlem.
+        public void UpdateMember(Member member)
+        {
+            // Skapar och initierar ett anslutningsobjekt.
+            using (SqlConnection conn = CreateConnection())
+            {
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("appSchema.usp_UpdateMedlem ", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Lägger till den paramter den lagrade proceduren kräver för medlemsid:t.
+                    cmd.Parameters.AddWithValue("@MedlemID", member.MedID);
+
+                    // Lägger till de paramterar den lagrade proceduren kräver.
+                    cmd.Parameters.Add("@Personnummer", SqlDbType.VarChar, 12).Value = member.PersNR;
+                    cmd.Parameters.Add("@Fornamn", SqlDbType.VarChar, 10).Value = member.Fnamn;
+                    cmd.Parameters.Add("@Efternamn", SqlDbType.VarChar, 10).Value = member.Enamn;
+                    cmd.Parameters.Add("@Ort", SqlDbType.VarChar, 25).Value = member.Ort;
+                    cmd.Parameters.Add("@Gatuadress", SqlDbType.VarChar, 30).Value = member.Address;
+                    cmd.Parameters.Add("@BefattningID", SqlDbType.Int).Value = member.BefattningstypEdit;
+                    cmd.Parameters.Add("@Kontaktuppgift", SqlDbType.VarChar, 20).Value = member.Kontaktuppgift;
+                    cmd.Parameters.Add("@KontakttypID", SqlDbType.Int).Value = member.Kontakttyp;
+
+                    // Öppnar anslutningen till databasen.
+                    conn.Open();
+
+                    // Den lagrade proceduren innehåller en UPDATE-sats och returnerar inga poster varför metoden 
+                    // ExecuteNonQuery används för att exekvera den lagrade proceduren.
+                    cmd.ExecuteNonQuery();
+                }
+                catch
+                {
+                    // Kastar ett eget undantag om ett undantag kastas.
+                    throw new ApplicationException("An error occured in the data access layer.");
+                }
+            }
+        }
+
+
+        // Tar bort en medlems uppgifter.
+        public void DeleteMember(int memberId)
+        {
+            // Skapar och initierar ett anslutningsobjekt.
+            using (SqlConnection conn = CreateConnection())
+            {
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("appSchema.usp_DeleteMedlem", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.Add("@MedlemID", SqlDbType.Int).Value = memberId;
+
+                    // Öppnar anslutningen till databasen.
+                    conn.Open();
+
+                    // Den lagrade proceduren innehåller en DELETE-sats och returnerar inga poster varför metoden 
+                    // ExecuteNonQuery används för att exekvera den lagrade proceduren.
+                    cmd.ExecuteNonQuery();
+                }
+                catch
+                {
+                    // Kastar ett eget undantag om ett undantag kastas.
+                    throw new ApplicationException("An error occured in the data access layer.");
+                }
+            }
+        }
+
+      
     }
 }
