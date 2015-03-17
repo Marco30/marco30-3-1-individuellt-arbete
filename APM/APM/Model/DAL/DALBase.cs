@@ -5,7 +5,7 @@ using System.Web;
 using System.Data.SqlClient;
 using System.Web.Configuration;
 
-namespace APM.Model.DAL
+namespace APM.Model.DAL// Marco Villegas
 {
     public abstract class DALBase
     {

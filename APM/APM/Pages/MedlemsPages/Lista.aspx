@@ -4,7 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainHolder" runat="server">
 
     <h1>
-       Medlemsregister
+       Medlemsregister Hej Marco
     </h1>
     <asp:Panel runat="server" ID="SuccessMessagePanel" Visible="false">
         <asp:Literal runat="server" ID="SuccessMessageLiteral" />

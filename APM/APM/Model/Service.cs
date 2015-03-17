@@ -6,7 +6,7 @@ using APM.Model.DAL;
 using System.ComponentModel.DataAnnotations;
 using APM.App_Infrastructure;
 
-namespace APM.Model
+namespace APM.Model// Marco Villegas
 {
 
     public class Service

@@ -5,7 +5,7 @@ using System.Web;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace APM.Model.DAL
+namespace APM.Model.DAL// Marco Villegas
 {
     public class MemberDAL : DALBase
     {
@@ -284,21 +284,57 @@ namespace APM.Model.DAL
             {
                 try
                 {
-                    SqlCommand cmd = new SqlCommand("appSchema.usp_UpdateMedlem ", conn);
+                    SqlCommand cmd = new SqlCommand("appSchema.usp_UpdateMedlem", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     // Lägger till den paramter den lagrade proceduren kräver för medlemsid:t.
-                    cmd.Parameters.AddWithValue("@MedlemID", member.MedID);
+                    //cmd.Parameters.AddWithValue("@MedlemID", member.MedID);
+
+                    int A = 0;
+
+                    if (member.Befattningstyp == "Ordförande")
+                  {
+                       A = 1;
+                  }
+                    else if (member.Befattningstyp == "Vice ordförande")
+                    {
+                         A = 2;
+                    }
+                    else if (member.Befattningstyp == "Styrelsemedlem")
+                    {
+                       A = 3;
+                    }
+                    else if (member.Befattningstyp == "Medlem")
+                    {
+                       A = 4;
+                    }
+
+                    int B = 0;
+
+                    if (member.Kontakttyp == "Mobil")
+                    {
+                        B = 1;
+                    }
+                    else if (member.Kontakttyp == "Hem")
+                    {
+                        B = 2;
+                    }
+                    else if (member.Kontakttyp == "E-post")
+                    {
+                        B = 3;
+                    }
+                 
 
                     // Lägger till de paramterar den lagrade proceduren kräver.
+                    cmd.Parameters.Add("@MedlemID", SqlDbType.Int, 4).Value = member.MedID;
                     cmd.Parameters.Add("@Personnummer", SqlDbType.VarChar, 12).Value = member.PersNR;
                     cmd.Parameters.Add("@Fornamn", SqlDbType.VarChar, 10).Value = member.Fnamn;
                     cmd.Parameters.Add("@Efternamn", SqlDbType.VarChar, 10).Value = member.Enamn;
                     cmd.Parameters.Add("@Ort", SqlDbType.VarChar, 25).Value = member.Ort;
                     cmd.Parameters.Add("@Gatuadress", SqlDbType.VarChar, 30).Value = member.Address;
-                    cmd.Parameters.Add("@BefattningID", SqlDbType.Int).Value = member.BefattningstypEdit;
+                    cmd.Parameters.Add("@BefattningID", SqlDbType.Int).Value = A;//member.Befattningstyp;
                     cmd.Parameters.Add("@Kontaktuppgift", SqlDbType.VarChar, 20).Value = member.Kontaktuppgift;
-                    cmd.Parameters.Add("@KontakttypID", SqlDbType.Int).Value = member.Kontakttyp;
+                    cmd.Parameters.Add("@KontakttypID", SqlDbType.Int).Value = B;//member.Kontakttyp;
 
                     // Öppnar anslutningen till databasen.
                     conn.Open();

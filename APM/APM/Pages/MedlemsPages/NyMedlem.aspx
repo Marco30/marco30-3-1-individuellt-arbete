@@ -23,7 +23,7 @@
             <div>
                 <asp:TextBox ID="FirstName" runat="server" Text='<%# BindItem.Fnamn %>' MaxLength="20" />
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
-                    ErrorMessage="Fältet får inte vara tomt!"
+                    ErrorMessage="Förnamns fältet är tom!"
                     ControlToValidate="FirstName"
                     Display="None"></asp:RequiredFieldValidator>
             </div>
@@ -33,7 +33,7 @@
             <div>
                 <asp:TextBox ID="LastName" runat="server" Text='<%# BindItem.Enamn %>' MaxLength="20" />
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
-                    ErrorMessage="Fältet får inte vara tomt!"
+                    ErrorMessage="Efternamn fältet är tom  !"
                     ControlToValidate="LastName"
                     Display="None"></asp:RequiredFieldValidator>
             </div>                
@@ -43,7 +43,7 @@
             <div>
                 <asp:TextBox ID="CivicRegistrationNumber" runat="server" Text='<%# BindItem.PersNR %>' MaxLength="11" />
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server"
-                    ErrorMessage="Fältet får inte vara tomt!"
+                    ErrorMessage="Personnummr fältet är tomt!"
                     ControlToValidate="CivicRegistrationNumber"
                     Display="None"></asp:RequiredFieldValidator>
                 <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"
@@ -58,7 +58,7 @@
             <div>
                 <asp:TextBox ID="Address" runat="server" Text='<%# BindItem.Address %>' MaxLength="30" />
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server"
-                    ErrorMessage="Fältet får inte vara tomt!"
+                    ErrorMessage="Address fältet ät tomt!"
                     ControlToValidate="Address"
                     Display="None"></asp:RequiredFieldValidator>
             </div>               
@@ -69,7 +69,7 @@
             <div>
                 <asp:TextBox ID="Region" runat="server" Text='<%# BindItem.Ort %>' MaxLength="25" />
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server"
-                    ErrorMessage="Fältet får inte vara tomt!"
+                    ErrorMessage="Ort fältet ät tomt!"
                     ControlToValidate="Region"
                     Display="None"></asp:RequiredFieldValidator>
             </div>
@@ -84,6 +84,8 @@
                 <asp:ListItem Text="E-post" Value="3"></asp:ListItem>
             </asp:DropDownList>
 
+
+
              <div>
                 <label for="TextBox2">Kontaktuppgift</label>
             </div>
@@ -91,7 +93,7 @@
             <div>
                 <asp:TextBox ID="TextBox2" runat="server" Text='<%# BindItem.Kontaktuppgift %>' MaxLength="25" />
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server"
-                    ErrorMessage="Fältet får inte vara tomt!"
+                    ErrorMessage="Kontaktuppgift fältet ät tomt!"
                     ControlToValidate="TextBox2"
                     Display="None"></asp:RequiredFieldValidator>
             </div>
@@ -100,13 +102,17 @@
                 <label for="DropDownList1">Befattningstyp</label>
             </div>
 
-                     <asp:DropDownList ID="DropDownList1" runat="server" SelectedValue='<%# BindItem.Befattningstyp %>'>
-                <asp:ListItem Text="Ordförande" Value="1"></asp:ListItem>
-                <asp:ListItem Text="Vice ordförande" Value="2"></asp:ListItem>
-                <asp:ListItem Text="Styrelsemedlem" Value="3"></asp:ListItem>
-                <asp:ListItem Text="Medlem" Value="4"></asp:ListItem>
-            </asp:DropDownList>
+ 
 
+            <asp:DropDownList ID="DropDownList3" runat="server" DataSourceID="ReferralDataSource"
+    DataTextField="FieldValue" DataValueField="LookupId" Enabled="False" SelectedValue='<%# BindItem.Befattningstyp %>'
+    AppendDataBoundItems="True">
+    <asp:ListItem Value="1">Ordförande</asp:ListItem>
+                 <asp:ListItem Value="2">Vice ordförande</asp:ListItem>
+                 <asp:ListItem Value="3">Styrelsemedlem</asp:ListItem>
+                 <asp:ListItem Value="4">Medlem</asp:ListItem>
+</asp:DropDownList>
+    
            
             <div>
                 <!-- "Kommandknappar" för att skapa ny kontaktuppgift och rensa texfälten om amn avrbryte -->

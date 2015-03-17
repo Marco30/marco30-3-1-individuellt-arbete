@@ -78,11 +78,12 @@
             </div>
             <div>
 
-             
-
-             <div>
-                 <asp:Label ID="ItemLNameLabel" runat="server" Text='<%#: BindItem.Kontakttyp %>'></asp:Label>
-            </div>
+                <asp:DropDownList ID="DropDownList5" runat="server" Enabled =true
+                        SelectedValue='<%# BindItem.Kontakttyp %>' AppendDataBoundItems =true>
+                        <asp:ListItem Value="Mobil">Mobil</asp:ListItem>
+                        <asp:ListItem Value="Hem">Hem</asp:ListItem>
+                        <asp:ListItem Value="E-post">E-post</asp:ListItem>
+                    </asp:DropDownList> 
 
             <div>
                 <asp:TextBox ID="TextBox2" runat="server" Text='<%# BindItem.Kontaktuppgift %>' MaxLength="25" />
@@ -92,8 +93,13 @@
                     Display="None"></asp:RequiredFieldValidator>
             </div>
 
-                
-
+                <asp:DropDownList ID="DropDownList4" runat="server" Enabled =true
+                        SelectedValue='<%# BindItem.Befattningstyp %>' AppendDataBoundItems =true>
+                        <asp:ListItem Value="Ordförande">Ordförande</asp:ListItem>
+                        <asp:ListItem Value="Vice ordförande">Vice ordförande</asp:ListItem>
+                        <asp:ListItem Value="Styrelsemedlem">Styrelsemedlem</asp:ListItem>
+                        <asp:ListItem Value="Medlem">Medlem</asp:ListItem>
+                    </asp:DropDownList> 
 
 
                 <!-- "Kommandknappar" för att lägga till en ny kontaktuppgift och rensa texfälten -->
