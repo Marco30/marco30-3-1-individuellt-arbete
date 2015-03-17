@@ -4,9 +4,15 @@
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainHolder" runat="server">
-     <h1>
-        Ta bort medlem
+    
+ 
+      <div id="TitleLabel">
+               
+             <h1>
+       Ta bort medlem
     </h1>
+            </div>
+
     <div>
         <asp:HyperLink ID="HyperLink3" CssClass="alinks" runat="server" Text="Hem" NavigateUrl='<%$ RouteUrl:routename=Members %>' />
     </div>

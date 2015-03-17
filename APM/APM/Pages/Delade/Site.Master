@@ -6,15 +6,20 @@
 <head runat="server">
     <title>
         <asp:ContentPlaceHolder ID="TitleHolder" runat="server">
-           Active Power Movement
+           <h1>Active Power Movement</h1>
         </asp:ContentPlaceHolder>
     </title>
-    <link href="~/CSS/Style.css" rel="stylesheet" type="text/css"/>
+    <link href="css/Style.css" rel="stylesheet" media="screen" //>
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
-        <div id="main">
+        <div id="inramning">
+            
+            <div id="TitleLabel1">
+            <h1>Active Power Movement</h1>
+             </div>
+
             <asp:ContentPlaceHolder ID="MainHolder" runat="server" />
         </div>
     </div>

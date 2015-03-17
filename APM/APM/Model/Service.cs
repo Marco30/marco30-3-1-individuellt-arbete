@@ -37,7 +37,7 @@ namespace APM.Model// Marco Villegas
             if (!member.Validate(out validationResults))
             {
                 // Klarar inte objektet valideringen så kastas ett undantag, samt en referens till valideringssamlingen.
-                var ex = new ValidationException("klarade inte valideringen.");
+                var ex = new ValidationException("klarade inte valideringen");
                 ex.Data.Add("ValidationResults", validationResults);
                 throw ex;
             }

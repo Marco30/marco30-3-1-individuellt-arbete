@@ -63,7 +63,7 @@ namespace APM.Model.DAL// Marco Villegas
                 }
                 catch
                 {
-                    throw new ApplicationException("An error occured while getting members from the database.");
+                    throw new ApplicationException("Fel uppstod i vid hämtningar av medlem från data bas");
                 }
             }
         }
@@ -71,71 +71,6 @@ namespace APM.Model.DAL// Marco Villegas
         // Hämtar en medlems uppgifter.
         public Member GetMemberById(int MedlemID)
         {
-
-            /*
-            // Skapar och initierar ett anslutningsobjekt.
-            using (SqlConnection conn = CreateConnection())
-            {
-                try
-                {
-                    // Skapar och initierar ett SqlCommand-objekt som används till att exekveras specifierad lagrad procedur.
-                    SqlCommand cmd = new SqlCommand("appSchema.usp_getMedlem", conn);
-                    cmd.CommandType = CommandType.StoredProcedure;
-
-                    // Lägger till den paramter den lagrade proceduren kräver.
-                    cmd.Parameters.AddWithValue("@MedlemID", MedlemID);
-
-                    // Öppnar anslutningen till databasen.
-                    conn.Open();
-
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        // Så länge som det finns poster att läsa returnerar Read true och läsningen fortsätter.
-                        if (reader.Read())
-                        {
-                            // Tar reda på vilket index de olika kolumnerna har.
-                            int fNamnIndex = reader.GetOrdinal("Fornamn");
-                            int eNamnIndex = reader.GetOrdinal("Efternamn");
-                            int persNrIndex = reader.GetOrdinal("Personnummer");
-
-                            int addressIndex = reader.GetOrdinal("Gatuadress");
-                        
-                             int ortIndex = reader.GetOrdinal("Ort");
-
-                             int ArvodeIndex = reader.GetOrdinal("Arvode");
-                       
-                            var BtyprIndex = reader.GetOrdinal("Befattningstyp");
-                            var BMIndex = reader.GetOrdinal("Blevmedlem");
-                       
-
-                            // Returnerar referensen till de skapade Member-objektet.
-                            return new Member
-                            {
-                                MedID = MedlemID,
-                                Fnamn = reader.GetString(fNamnIndex),
-                                Enamn = reader.GetString(eNamnIndex),
-                                PersNR = reader.GetString(persNrIndex),
-                                Address = reader.GetString(addressIndex),
-                                Ort = reader.GetString(ortIndex),
-                                Arvode = reader.GetInt32(ArvodeIndex),
-                                Befattningstyp = reader.GetString(BtyprIndex),
-                                Blevmedlem = reader.GetDateTime(BMIndex).ToString("yyyy-MM-dd"),
-                               
-                            };
-                        }
-                    }
-
-                    return null;
-                }
-                catch
-                {
-                    // Kastar ett eget undantag om ett undantag kastas.
-                    throw new ApplicationException("An error occured in the data access layer.");
-                }
-            }*/
-
-            //-------------------------------------------------------
-
 
             // Skapar och initierar ett anslutningsobjekt.
             using (SqlConnection conn = CreateConnection())
@@ -197,18 +132,10 @@ namespace APM.Model.DAL// Marco Villegas
                 catch
                 {
                     // Kastar ett eget undantag om ett undantag kastas.
-                    throw new ApplicationException("An error occured in the data access layer.");
+                    throw new ApplicationException("Fel uppstod i data access layer.");
                 }
             }
 
-
-
-
-
-
-
-
-            //---------------------------------------------------------------
 
         }
 
@@ -221,28 +148,8 @@ namespace APM.Model.DAL// Marco Villegas
                 try
                 {
                     // Skapar och initierar ett SqlCommand-objekt som används till att exekveras specifierad lagrad procedur.
-                    SqlCommand cmd = new SqlCommand("appSchema.usp_AddMedlem2", conn);
+                    SqlCommand cmd = new SqlCommand("appSchema.usp_AddMedlem2", conn); // Den lagrade proceduren lägger in meddlem, kontaktinfo och Befattnings
                     cmd.CommandType = CommandType.StoredProcedure;
-
-                    // Lägger till de paramterar den lagrade proceduren kräver.
-                    /*
-                    cmd.Parameters.Add("@Fnamn", SqlDbType.VarChar, 20).Value = member.Fnamn;
-                    cmd.Parameters.Add("@Enamn", SqlDbType.VarChar, 20).Value = member.Enamn;
-                    cmd.Parameters.Add("@PersNR", SqlDbType.VarChar, 11).Value = member.Befattningstyp;
-                    cmd.Parameters.Add("@Address", SqlDbType.VarChar, 30).Value = member.Blevmedlem;
-                    cmd.Parameters.Add("@PostNR", SqlDbType.VarChar, 6).Value = member.Arvode;
-                    
-                    cmd.Parameters.Add("@Ort", SqlDbType.VarChar, 25).Value = member.Ort; */
-                    /*
-                  cmd.Parameters.Add("@Personnummer", SqlDbType.VarChar, 12).Value = member.PersNR;
-                  cmd.Parameters.Add("@Fornamn", SqlDbType.VarChar, 10).Value = member.Fnamn;
-                  cmd.Parameters.Add("@Efternamn", SqlDbType.VarChar, 10).Value = member.Enamn;
-                  cmd.Parameters.Add("@Ort", SqlDbType.VarChar, 25).Value = member.Ort;
-                  cmd.Parameters.Add("@Gatuadress", SqlDbType.VarChar, 30).Value = member.Address;
-                  cmd.Parameters.Add("@BefattningID", SqlDbType.Int).Value = member.Befattningstyp;
-                  cmd.Parameters.Add("@Kontaktuppgift", SqlDbType.VarChar, 20).Value = member.Kontaktuppgift;
-                  cmd.Parameters.Add("@KontakttypID", SqlDbType.Int).Value = member.Kontakttypin;*/
-
 
 
                     cmd.Parameters.Add("@Personnummer", SqlDbType.VarChar, 12).Value = member.PersNR;
@@ -261,7 +168,7 @@ namespace APM.Model.DAL// Marco Villegas
                     // Öppnar anslutningen till databasen.
                     conn.Open();
 
-                    // Den lagrade proceduren innehåller en INSERT-sats och returnerar inga poster varför metoden 
+               
                     // ExecuteNonQuery används för att exekvera den lagrade proceduren.
                     cmd.ExecuteNonQuery();
 
@@ -271,7 +178,7 @@ namespace APM.Model.DAL// Marco Villegas
                 catch
                 {
                     // Kastar ett eget undantag om ett undantag kastas.
-                    throw new ApplicationException("An error occured in the data access layer.");
+                    throw new ApplicationException("Fel uppstod i  the data access layer.");
                 }
             }
         }
@@ -284,7 +191,7 @@ namespace APM.Model.DAL// Marco Villegas
             {
                 try
                 {
-                    SqlCommand cmd = new SqlCommand("appSchema.usp_UpdateMedlem", conn);
+                    SqlCommand cmd = new SqlCommand("appSchema.usp_UpdateMedlem", conn); // Den lagrade proceduren uppdatrar medlem, kontaktinfo och befatnings tabellen   
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     // Lägger till den paramter den lagrade proceduren kräver för medlemsid:t.
@@ -339,14 +246,14 @@ namespace APM.Model.DAL// Marco Villegas
                     // Öppnar anslutningen till databasen.
                     conn.Open();
 
-                    // Den lagrade proceduren innehåller en UPDATE-sats och returnerar inga poster varför metoden 
+                   
                     // ExecuteNonQuery används för att exekvera den lagrade proceduren.
                     cmd.ExecuteNonQuery();
                 }
                 catch
                 {
                     // Kastar ett eget undantag om ett undantag kastas.
-                    throw new ApplicationException("An error occured in the data access layer.");
+                    throw new ApplicationException("Fel uppstod i data access layer.");
                 }
             }
         }
@@ -360,7 +267,7 @@ namespace APM.Model.DAL// Marco Villegas
             {
                 try
                 {
-                    SqlCommand cmd = new SqlCommand("appSchema.usp_DeleteMedlem", conn);
+                    SqlCommand cmd = new SqlCommand("appSchema.usp_DeleteMedlem", conn);// Den lagrade proceduren ären tar bort medleme
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     cmd.Parameters.Add("@MedlemID", SqlDbType.Int).Value = memberId;
@@ -368,14 +275,14 @@ namespace APM.Model.DAL// Marco Villegas
                     // Öppnar anslutningen till databasen.
                     conn.Open();
 
-                    // Den lagrade proceduren innehåller en DELETE-sats och returnerar inga poster varför metoden 
+                    
                     // ExecuteNonQuery används för att exekvera den lagrade proceduren.
                     cmd.ExecuteNonQuery();
                 }
                 catch
                 {
                     // Kastar ett eget undantag om ett undantag kastas.
-                    throw new ApplicationException("An error occured in the data access layer.");
+                    throw new ApplicationException("Fel uppstod i data access layer.");
                 }
             }
         }

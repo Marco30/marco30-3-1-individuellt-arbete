@@ -1,11 +1,20 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/Delade/Site.Master" AutoEventWireup="true" CodeBehind="Lista.aspx.cs" Inherits="APM.Pages.MedlemsPages.Lista" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleHolder" runat="server">
 </asp:Content>
+
+
 <asp:Content ID="Content2" ContentPlaceHolderID="MainHolder" runat="server">
 
-    <h1>
-       Medlemsregister Hej Marco
+
+     <div id="TitleLabel">
+               
+             <h1>
+       Medlemsregister 
     </h1>
+            </div>
+
+    <div id="Selected">
+
     <asp:Panel runat="server" ID="SuccessMessagePanel" Visible="false">
         <asp:Literal runat="server" ID="SuccessMessageLiteral" />
     </asp:Panel>
@@ -20,22 +29,29 @@
         ItemType="APM.Model.Member"
         SelectMethod="MemberListView_GetData"
         DataKeyNames="MedID">
+
         <LayoutTemplate>
             <!-- Platshållare för medlemmar -->
             <asp:PlaceHolder ID="itemPlaceholder" runat="server" />
         </LayoutTemplate>
+        
+      
+        
         <ItemTemplate>
             <dl>
-                <dt class="header">
+                <dt id="header">
                     <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl='<%# GetRouteUrl("MemberDetails", new { id = Item.MedID })  %>' Text='<%# Item.Fnamn + " " + Item.Enamn %> ' /></dt>
-                <dd class="content">
+                <dd id="content1">
                     <%#: Item.Blevmedlem %>
                 </dd>
-                <dd class="content">
+                <dd id="content2">
                     <%#: Item.Befattningstyp %> 
                 </dd>
             </dl>
         </ItemTemplate>
+
+        
+
         <EmptyDataTemplate>
             <%-- Detta visas då medlemmar saknas i databasen. --%>
             <p>
@@ -44,5 +60,7 @@
         </EmptyDataTemplate>
 
     </asp:ListView>
+
+        </div>
 
 </asp:Content>

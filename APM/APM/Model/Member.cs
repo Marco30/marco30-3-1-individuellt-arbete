@@ -36,7 +36,7 @@ namespace APM.Model// Marco Villegas
         public string Ort { get; set; }
 
        [Required(ErrorMessage = "En Kontaktuppgift måste anges.")]
-       [StringLength(20, ErrorMessage = "Kontaktuppgift kan bestå av som mest 20 tecken")]
+       [StringLength(30, ErrorMessage = "Kontaktuppgift kan bestå av som mest 20 tecken")]
         public string Kontaktuppgift { get; set; }
         public string Kontakttyp { get; set; }
         public string Befattningstyp { get; set; }

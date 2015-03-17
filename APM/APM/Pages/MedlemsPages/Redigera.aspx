@@ -1,12 +1,19 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/Delade/Site.Master" AutoEventWireup="true" CodeBehind="Redigera.aspx.cs" Inherits="APM.Pages.MedlemsPages.Redigera" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleHolder" runat="server">
 </asp:Content>
+
+
 <asp:Content ID="Content2" ContentPlaceHolderID="MainHolder" runat="server">
 
 
-     <h1>
-        Redigera medlem
+
+    <div id="TitleLabel">
+               
+             <h1>
+          Redigera medlem
     </h1>
+            </div>
+
     <div>
         <asp:HyperLink ID="HyperLink1" CssClass="alinks" runat="server" Text="Hem" NavigateUrl='<%$ RouteUrl:routename=Members %>' />
     </div>

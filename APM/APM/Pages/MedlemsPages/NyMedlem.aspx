@@ -4,9 +4,14 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainHolder" runat="server">
 
 
-     <h1>
-        Ny medlem
+
+     <div id="TitleLabel">
+               
+             <h1>
+       Medlemsregister 
     </h1>
+            </div>
+
     <div>
         <asp:HyperLink ID="HyperLink3" CssClass="alinks" runat="server" Text="Hem" NavigateUrl='<%$ RouteUrl:routename=Members %>' />
     </div>
@@ -104,14 +109,12 @@
 
  
 
-            <asp:DropDownList ID="DropDownList3" runat="server" DataSourceID="ReferralDataSource"
-    DataTextField="FieldValue" DataValueField="LookupId" Enabled="False" SelectedValue='<%# BindItem.Befattningstyp %>'
-    AppendDataBoundItems="True">
-    <asp:ListItem Value="1">Ordförande</asp:ListItem>
-                 <asp:ListItem Value="2">Vice ordförande</asp:ListItem>
-                 <asp:ListItem Value="3">Styrelsemedlem</asp:ListItem>
-                 <asp:ListItem Value="4">Medlem</asp:ListItem>
-</asp:DropDownList>
+            <asp:DropDownList ID="DropDownList1" runat="server" SelectedValue='<%# BindItem.Befattningstyp %>'>
+                <asp:ListItem Text="Ordförande" Value="1"></asp:ListItem>
+                <asp:ListItem Text="Vice ordförande" Value="2"></asp:ListItem>
+                <asp:ListItem Text="Styrelsemedlem" Value="3"></asp:ListItem>
+                <asp:ListItem Text="Medlem" Value="4"></asp:ListItem>
+            </asp:DropDownList>
     
            
             <div>
