@@ -134,6 +134,11 @@ namespace APM.Model// Marco Villegas
         {
             KontaktDAL.UpdateKontaktInfoById(K);
         }
+
+        public void DeletKontaktInfo(KontaktTyp K)
+        {
+            KontaktDAL.DeletKontaktInfoById(K);
+        }
    
     }
 

@@ -100,6 +100,30 @@ namespace APM.Pages.MedlemsPages
         
             }
         }
+
+        public void kontaktListView_Delete(KontaktTyp K)
+        {
+            if (ModelState.IsValid)
+            {
+
+                try
+                {
+
+                    Service service2 = new Service();
+                    service2.DeletKontaktInfo(K);
+
+                    //Laddar om sidan
+                    Response.RedirectToRoute("Memberkontakt", false);
+                    Context.ApplicationInstance.CompleteRequest();
+
+                }
+                catch (Exception)
+                {
+                    ModelState.AddModelError(String.Empty, "Fel inträffade då kontak skulle tasbort");
+                }
+
+            }
+        }
     
 
 

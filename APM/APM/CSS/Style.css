@@ -106,6 +106,43 @@ height: 395px;
 color: #FFF;
 }
 
+#KontakT1
+{
+margin: 107px 68px 22px 45px;
+font-size: 21px;
+line-height: 0px;
+font-family: Verdana;
+color: #FFF;
+}
+
+#KontakT2
+{
+margin: -275px 68px 0px 435px;
+font-size: 20px;
+line-height: 0px;
+font-family: Verdana;
+color: #FFF;
+}
+
+#Kontak1
+{
+margin: 0px 68px 77px 45px;
+font-size: 18px;
+line-height: 30px;
+font-family: Verdana;
+
+color: #FFF;
+}
+
+#Kontak2
+{
+margin: 0px 68px 77px 435px;
+font-size: 18px;
+line-height: 24px;
+font-family: Verdana;
+color: #FFF;
+}
+
 #Selected2
 {
 margin: -426px 63px 62px 487px;
@@ -115,6 +152,59 @@ font-family: Verdana;
 height: 395px;
 color: #FFF;
 }
+
+#Ktilbaka
+{
+margin: -56px 68px 79px 295px;
+font-size: 18px;
+line-height: 24px;
+font-family: Verdana;
+color: #FFF;
+}
+
+#sight1
+{
+  margin: 2px 68px 79px 67px;
+font-size: 17px;
+line-height: 24px;
+font-family: Verdana;
+color: #FFF;
+}
+
+
+    #sight1 a:link 
+    {
+
+        font-size: 18px;
+    }
+
+    #sight1 a:hover {
+    color: #66AFD5;
+    text-decoration: underline;
+}
+
+        #sight2 a:hover 
+        {
+    color: #66AFD5;
+    text-decoration: underline;
+}
+
+     #sight2 a:link 
+    {
+
+        font-size: 18px;
+    }
+
+#sight2
+{
+  margin: -104px 77px -7px 175px;
+font-size: 18px;
+line-height: 24px;
+font-family: Verdana;
+color: #FFF;
+}
+
+
 
 #thumbnails
 {

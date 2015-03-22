@@ -185,6 +185,41 @@ namespace APM.Model.DAL
             }
         }
 
+        // Uppdaterar en medlems Kontaktuppgifter i tabellen Medlem.
+        public void DeletKontaktInfoById(KontaktTyp K)
+        {
+            // Skapar och initierar ett anslutningsobjekt.
+            using (SqlConnection conn = CreateConnection())
+            {
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("appSchema.usp_DeleteMedlemKontaktInfoByID", conn); // Den lagrade proceduren uppdatrar medlem, kontaktinfo och befatnings tabellen   
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Lägger till den paramter den lagrade proceduren kräver för medlemsid:t.
+                    //cmd.Parameters.AddWithValue("@MedlemID", member.MedID);
+
+
+                    // Lägger till de paramterar den lagrade proceduren kräver.
+                    cmd.Parameters.Add("@MedlemID", SqlDbType.Int, 4).Value = K.MedID;
+                    cmd.Parameters.Add("@KontaktID", SqlDbType.Int, 4).Value = K.KontaktID;
+
+
+                    // Öppnar anslutningen till databasen.
+                    conn.Open();
+
+
+                    // ExecuteNonQuery används för att exekvera den lagrade proceduren.
+                    cmd.ExecuteNonQuery();
+                }
+                catch
+                {
+                    // Kastar ett eget undantag om ett undantag kastas.
+                    throw new ApplicationException("Fel uppstod i data access layer.");
+                }
+            }
+        }
+
 
     }
 }

@@ -4,17 +4,21 @@
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainHolder" runat="server">
-    <div id="Selected">
+    
+   
+    <div id="KontakT1">
+       <!-- läger till kontaktinfromation -->   
+   
+     Lägg till kontaktinformation
+    </div>
+    
+     <div id="Kontak1">
 
           <!-- Visar text meddelande om man tagit bort medlem  -->
 
     <asp:Panel runat="server" ID="SuccessMessagePanel" Visible="false">
         <asp:Literal runat="server" ID="SuccessMessageLiteral" />
     </asp:Panel>
-
-   <!-- läger till kontaktinfromation -->   
-   
-     <h1>Lägg till kontaktinfromation</h1> <hr /> <br /> 
              
 <asp:FormView ID="InstrumentFormView" runat="server"
     ItemType="APM.Model.KontaktTyp"
@@ -59,16 +63,21 @@
        </InsertItemTemplate>
       </asp:FormView>
 
+        </div>
+
+    <div id="KontakT2">
+      <!-- Redigerar till kontaktinfo -->
+   kontaktinformation
+</div>
     <!-- alla här upp funkar bra nu, vi fixar det här ner nu-->
+    <div id="Kontak2">
 
     <asp:ValidationSummary ID="ValidationSummary1" runat="server" HeaderText="Följande fel inträffade:"  ValidationGroup="new"
             CssClass="validation-summary-errors"/>
      <asp:ValidationSummary ID="ValidationSummary2" runat="server" HeaderText="Följande fel inträffade"
                         CssClass="validation-summary-errors" ValidationGroup="oldKontakter" ShowModelStateErrors="False" />
     <br />
-     <!-- Redigerar till kontaktinfo -->
-    <h1>läg till Kontakt info</h1> <hr /> <br />
-
+  
        <!-- ListView som presenterar alla Kontakter som kan redigeras. -->
          <!--DataKeyNames="KontaktID,MedID" används för att ta med ID som du hämtat ut frå databasen, in i C#-->
             <asp:ListView ID="kontaktListView" runat="server"
@@ -100,15 +109,20 @@
 
                             <asp:TextBox ID="Kontaktuppgift" runat="server" Text='<%# BindItem.Kontaktuppgift %>'  MaxLength="60" Width="350px" />  
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ValidationGroup="oldKontakter"
-                                ErrorMessage="Ett låtnamn måste anges." ControlToValidate="Kontaktuppgift" Display="Dynamic" SetFocusOnError="true"></asp:RequiredFieldValidator>
+                                ErrorMessage="Kontaktuppgift får inte var tom" ControlToValidate="Kontaktuppgift" Display="Dynamic" SetFocusOnError="true"></asp:RequiredFieldValidator>
                     </div>
                    
-                   <div class="sRight">
+                   <div ID="sight1">
 
                      <!-- Redigera knapp -->
                      <asp:LinkButton ID="LinkButton1"  runat="server" CommandName="Update" Text="Uppdatera"  CssClass="button lessMargin" ValidationGroup="oldKontakter" />  
-                                 
+                       </div>
+
+                        <div ID="sight2">
+                                  <asp:LinkButton ID="LinkButton2"  runat="server" CommandName="Delete" Text="Radera"  CssClass="button lessMargin" ValidationGroup="oldKontakter"
+                                     OnClientClick='<%# String.Format("return confirm(\" VARNING: du kommer ta bort Kontaktuppgift {0}?\")", Item.Kontakttyp) %>'/>  
                     </div>
+
                     </div>
                         <br />
 
@@ -117,10 +131,15 @@
                      </ItemTemplate>                 
             </asp:ListView>
 
+        </div>
+
+        <div id="Ktilbaka">
         <!-- Tillbakaknapp -->
     <asp:HyperLink ID="HyperLink2" runat="server" Text="Tillbaka till listan" 
                                    NavigateUrl="<%$ RouteUrl:routename=Default %>" CssClass="buttonBack" />
+            </div>
 
 
-</div>
+
+
 </asp:Content>
