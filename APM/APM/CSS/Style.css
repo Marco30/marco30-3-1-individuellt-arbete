@@ -61,16 +61,44 @@ height: 901px;
 }
 #TitleLabel
 {
-margin: -15px 44px -13px 267px;
+margin: 2px 44px -13px 307px;
 color: #FBF6F6;
 font-size: 32px;
 line-height: 155px;
 font-family: Verdana;
 }
 
+#TitleLabellist
+{
+margin: 2px 44px -13px 241px;
+color: #FBF6F6;
+font-size: 32px;
+line-height: 155px;
+font-family: Verdana;
+}
+
+#TitleLabelRedigera
+{
+margin: 2px 44px -13px 234px;
+color: #FBF6F6;
+font-size: 32px;
+line-height: 155px;
+font-family: Verdana;
+}
+
+#TitleLabelNy
+{
+margin: 2px 44px -13px 264px;
+color: #FBF6F6;
+font-size: 32px;
+line-height: 155px;
+font-family: Verdana;
+}
+
+
 #slut
 {
-margin: -50px 33px 10px 24px;
+margin: 2px 33px 10px 128px;
 color: #FBF6F6;
 font-size: 32px;
 line-height: 155px;
@@ -79,7 +107,7 @@ font-family: Verdana;
 
 #TitleLabel1
 {
-margin: 56px 82px -131px 137px;
+margin: 56px 82px -131px 158px;
 color: #FFF;
 font-size: 32px;
 line-height: 232px;
@@ -117,7 +145,7 @@ color: #FFF;
 
 #KontakT2
 {
-margin: -275px 68px 0px 435px;
+margin: -280px 68px 19px 435px;
 font-size: 20px;
 line-height: 0px;
 font-family: Verdana;
@@ -143,20 +171,39 @@ font-family: Verdana;
 color: #FFF;
 }
 
-#Selected2
-{
-margin: -426px 63px 62px 487px;
-font-size: 18px;
-line-height: 30px;
-font-family: Verdana;
-height: 395px;
-color: #FFF;
-}
+
 
 #Ktilbaka
 {
-margin: -56px 68px 79px 295px;
+margin: -17px 68px 79px 295px;
 font-size: 18px;
+line-height: 24px;
+font-family: Verdana;
+color: #FFF;
+}
+
+#text4
+{
+margin: 56px 81px -9px 222px;
+font-size: 25px;
+line-height: 24px;
+font-family: Verdana;
+color: #FFF;
+}
+
+#text5
+{
+margin: -45px 81px -6px 222px;
+font-size: 26px;
+line-height: 24px;
+font-family: Verdana;
+color: #FFF;
+}
+
+#text6
+{
+margin: -45px 81px -6px 252px;
+font-size: 26px;
 line-height: 24px;
 font-family: Verdana;
 color: #FFF;
@@ -308,11 +355,13 @@ font-family: Verdana;
 
 #header
 {
-margin: 11px 0px 13px -23px;
-font-size: 20px;
-font-family: Verdana;
-color: #FFF;
+    margin: 20px 0px 0px -24px;
+    font-size: 20px;
+    font-family: Verdana;
+    color: #FFF;
 }
+}
+
 #RequiredFieldValidator1
 {
 margin: 14px 3px 0px 88px;
@@ -625,4 +674,157 @@ font-size: 14pt;
     font-size: 40px;
     color:lightgreen;
     margin: -15px 44px -13px 267px;
+}
+
+#befattning
+{
+margin: -1012px 89px -131px 263px;
+color: #F5C1C1;
+font-size: 14pt;
+line-height: 232px;
+font-family: Verdana;
+}
+
+#arvode
+{
+margin: -16px 120px -173px 4px;
+color: #F5C1C1;
+font-size: 14pt;
+line-height: 232px;
+font-family: Verdana;
+}
+
+#b1
+{
+margin: 410px 82px -200px -10px;
+color: #FFF;
+font-size: 20px;
+line-height: 232px;
+font-family: Verdana;
+font-weight: bold;
+}
+
+#b2
+{
+ margin: -207px 82px -200px -8px;
+color: #FFF;
+font-size: 20px;
+line-height: 232px;
+font-family: Verdana;
+font-weight: bold;
+}
+
+#Meny
+{
+margin: -117px 71px -94px 207px;
+color: #FFF;
+font-size: 32px;
+line-height: 232px;
+font-family: Verdana;
+}
+
+#S1
+{
+    margin: 26px 68px 77px 86px;
+    font-size: 18px;
+    line-height: 30px;
+    font-family: Verdana;
+    height: 395px;
+    color: #FFF;
+}
+
+#Selected2
+{
+margin: -470px 63px 62px 487px;
+font-size: 18px;
+line-height: 30px;
+font-family: Verdana;
+height: 395px;
+color: #FFF;
+}
+
+#Selected2 p
+{
+margin: -470px 63px 62px 107px;
+font-size: 18px;
+line-height: 30px;
+font-family: Verdana;
+height: 395px;
+color: #FFF;
+font-weight: bold;
+}
+
+#header a
+{
+margin: -487px 54px 65px -74px;
+font-size: 21px;
+line-height: 30px;
+font-family: Verdana;
+height: 395px;
+color: #FFF;
+}
+
+#ingen
+{
+margin: -470px 63px 62px 487px;
+font-size: 18px;
+line-height: 30px;
+font-family: Verdana;
+height: 395px;
+color: #FFF;
+}
+
+
+#Nyhem
+{
+margin: 0px 63px 22px 266px;
+font-size: 18px;
+line-height: 30px;
+font-family: Verdana;
+color: #FFF;
+}
+#Ny1
+{
+margin: 23px 63px 62px 68px;
+font-size: 18px;
+line-height: 30px;
+font-family: Verdana;
+height: 395px;
+color: #FFF;
+}
+
+#Menykontakt
+{
+margin: 145px 63px -76px 216px;
+font-size: 18px;
+line-height: 30px;
+font-family: Verdana;
+color: #FFF;
+}
+
+#ValT2
+{
+margin: 0px 68px -153px 230px;
+font-size: 20px;
+line-height: 24px;
+font-family: Verdana;
+color: #F30F0F;
+}
+
+#ValT1
+{
+margin: -521px 68px 0px 405px;
+font-size: 20px;
+line-height: 24px;
+font-family: Verdana;
+color: #F30F0F;
+}
+
+#ValT3
+{
+margin: -464px 68px 0px 405px;
+font-size: 20px;
+line-height: 24px;
+font-family: Verdana;
+color: #F30F0F;
 }

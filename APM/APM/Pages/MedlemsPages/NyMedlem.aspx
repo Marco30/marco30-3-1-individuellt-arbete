@@ -5,24 +5,23 @@
 
 
 
-     <div id="TitleLabel">
+     <div id="TitleLabelNy">
                
              <h1>
-       Medlemsregister 
+       Ny Medlem
     </h1>
             </div>
 
-    <div id="Selected">
-
-        <!--Meny länkar-->
-    <div>
+            <!--Meny länkar-->
+    <div id="Nyhem">
         <asp:HyperLink ID="HyperLink3" CssClass="alinks" runat="server" Text="Hem" NavigateUrl='<%$ RouteUrl:routename=Members %>' />
     </div>
 
-        <!-- Visar fel medlande visas här -->
-    <asp:ValidationSummary ID="ValidationSummary1" runat="server" HeaderText="Ett fel har inträffat. Korrigera felet och försök igen." />
 
-        
+    <div id="Selected">
+
+
+
     <!-- formview som visar formulär-->
     <asp:FormView ID="MemberFormView" runat="server"
         ItemType="APM.Model.Member"
@@ -88,44 +87,22 @@
             </div>
 
 
-            <div><!-- Dropdownlist Kontakttyp -->
-                <label for="AddTypeDropDownList">Kontakttyp</label>
-                </div>
-                <asp:DropDownList ID="AddTypeDropDownList" runat="server"                    
-                    SelectMethod="KategoriTypeDropDownList_GetData"
-                    DataTextField="Kontakttyp"
-                    DataValueField="KontakttypID"
-                    SelectedValue='<%# BindItem.Kontakttyp %>'/>
-
-
-
-             <div>
-                <label for="TextBox2">Kontaktuppgift</label>
-            </div>
-
-            <div>
-                <asp:TextBox ID="TextBox2" runat="server" Text='<%# BindItem.Kontaktuppgift %>' MaxLength="25" />
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server"
-                    ErrorMessage="Kontaktuppgift fältet ät tomt!"
-                    ControlToValidate="TextBox2"
-                    Display="None"></asp:RequiredFieldValidator>
-            </div>
-
-
  
-               <div><!-- Dropdownlist Befattningstyp -->
+            <div><!-- Dropdownlist Befattningstyp -->
                 <label for="AddTypeDropDownList">Befattningstyp</label>
                 </div>
-                <asp:DropDownList ID="DropDownList2" runat="server"                    
-                    SelectMethod="BefattningstypTypeDropDownList_GetData"
+   
+                <asp:DropDownList ID="DropDownList1" runat="server" Enabled ="true"                 
+                    SelectMethod="BefattningstypTypeDropDownList_GetData" AppendDataBoundItems ="true"
                     DataTextField="Befattningstyp"
                     DataValueField="BefattningID"
-                    SelectedValue='<%# BindItem.Befattningstyp %>'/>
+                    SelectedValue='<%# BindItem.BefattningID %>'>
 
+                </asp:DropDownList>
 
     
            
-            <div>
+            <div id="Ny1">
                 <!-- "Kommandknappar" för att skapa ny kontaktuppgift och rensa texfälten om man vill avrbryte -->
                 <asp:LinkButton ID="LinkButton3" runat="server" CommandName="Insert" Text="Lägg till" />
                 <asp:LinkButton ID="LinkButton4" runat="server" CommandName="Cancel" Text="Rensa" CausesValidation="false" />
@@ -133,6 +110,13 @@
             </div>
         </InsertItemTemplate>
     </asp:FormView>
+
+        </div>
+
+
+             <div id="ValT1">
+        <!-- Visar fel medlande visas här -->
+    <asp:ValidationSummary ID="ValidationSummary1" runat="server" HeaderText="Fel har inträffat" />
 
         </div>
 

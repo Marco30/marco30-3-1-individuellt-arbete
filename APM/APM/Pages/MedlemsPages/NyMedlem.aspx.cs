@@ -22,7 +22,7 @@ namespace APM.Pages.MedlemsPages
 
                     // Sparar ett rättmeddelande i en temporär sessionsvariabel och dirigerar användaren till medlemsinfo
                     Page.SetTempData("SuccessMessage", " nya medlemmen lass till!!");
-                    Response.RedirectToRoute("MemberDetails", new { id = member.MedID });
+                    Response.RedirectToRoute("Memberkontakt", new { id = member.MedID });
                     Context.ApplicationInstance.CompleteRequest();
                 }
                 catch (Exception)
@@ -32,14 +32,6 @@ namespace APM.Pages.MedlemsPages
             }
 
         }
-
-
-        public IEnumerable<KontaktTyp> KategoriTypeDropDownList_GetData()
-        {
-            Service service1 = new Service();
-            return service1.GetKontaktTypes();
-        }
-
 
 
         public IEnumerable<Befattning> BefattningstypTypeDropDownList_GetData()

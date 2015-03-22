@@ -139,6 +139,11 @@ namespace APM.Model// Marco Villegas
         {
             KontaktDAL.DeletKontaktInfoById(K);
         }
+
+        public IEnumerable<Befattning> GetBefattninginfo(int MedID)
+        {
+            return BefattningDAL.GetBefattningByID(MedID);
+        }
    
     }
 

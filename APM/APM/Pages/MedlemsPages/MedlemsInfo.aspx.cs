@@ -47,6 +47,21 @@ namespace APM.Pages.MedlemsPages
 
         }
 
+        public IEnumerable<APM.Model.Befattning> BefattningListView_GetData([RouteData] int id)
+        {
+            try
+            {
+                Service service1 = new Service();
+                return service1.GetBefattninginfo(id);
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError(String.Empty, "Fel inträffade då Befattning skulle hämtas från databasen.");
+                return null;
+            }
+
+        }
+
 
 
     }

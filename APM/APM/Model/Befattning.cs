@@ -8,9 +8,11 @@ namespace APM.Model
 {
     public class Befattning
     {
+        public int MedID { get; set; }
         public int BefattningID { get; set; }
-
-        [StringLength(20, ErrorMessage = "Du kan inte ange mer än 20 tecken!")]
         public string Befattningstyp { get; set; }
+
+        public int Arvode { get; set; }
+
     }
 }

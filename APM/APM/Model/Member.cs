@@ -13,11 +13,11 @@ namespace APM.Model// Marco Villegas
         public int MedID { get; set; }
 
         [Required(ErrorMessage = "Ett Förnamn måste anges")]
-        [StringLength(10, ErrorMessage = "Förnamnet kan bestå av som mest 20 tecken")]
+        [StringLength(10, ErrorMessage = "Förnamnet kan bestå av som mest 10 tecken")]
         public string Fnamn { get; set; }
 
         [Required(ErrorMessage = "Ett efternamn måste anges")]
-        [StringLength(10, ErrorMessage = "Efternamnet kan bestå av som mest 20 tecken")]
+        [StringLength(10, ErrorMessage = "Efternamnet kan bestå av som mest 10 tecken")]
         public string Enamn { get; set; }
 
         [Required(ErrorMessage = "Ett personnummer måste anges")]
@@ -35,12 +35,10 @@ namespace APM.Model// Marco Villegas
         [StringLength(25, ErrorMessage = "Orten kan bestå av som mest 25 tecken")]
         public string Ort { get; set; }
 
-       [Required(ErrorMessage = "En Kontaktuppgift måste anges.")]
-       [StringLength(30, ErrorMessage = "Kontaktuppgift kan bestå av som mest 20 tecken")]
-        public string Kontaktuppgift { get; set; }
-        public string Kontakttyp { get; set; }
         public string Befattningstyp { get; set; }
         public string Blevmedlem { get; set; }
+
+        public int BefattningID { get; set; }
 
 
     }

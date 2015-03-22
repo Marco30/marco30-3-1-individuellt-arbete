@@ -31,6 +31,15 @@ namespace APM.Pages.MedlemsPages {
         protected global::System.Web.UI.WebControls.Literal SuccessMessageLiteral;
         
         /// <summary>
+        /// Button1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button1;
+        
+        /// <summary>
         /// HyperLink3 control.
         /// </summary>
         /// <remarks>
@@ -56,6 +65,15 @@ namespace APM.Pages.MedlemsPages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FormView MemberFormView;
+        
+        /// <summary>
+        /// BefattningListView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView BefattningListView;
         
         /// <summary>
         /// KontaktListVieww control.

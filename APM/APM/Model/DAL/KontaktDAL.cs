@@ -149,7 +149,7 @@ namespace APM.Model.DAL
             }
         }
 
-        // Uppdaterar en medlems Kontaktuppgifter i tabellen Medlem.
+        // Uppdaterar en medlems Kontaktuppgifter i tabellen kontakt.
         public void UpdateKontaktInfoById(KontaktTyp K)
         {
             // Skapar och initierar ett anslutningsobjekt.
@@ -185,7 +185,7 @@ namespace APM.Model.DAL
             }
         }
 
-        // Uppdaterar en medlems Kontaktuppgifter i tabellen Medlem.
+        // tar bort medlems Kontaktuppgif i tabellen Kontak.
         public void DeletKontaktInfoById(KontaktTyp K)
         {
             // Skapar och initierar ett anslutningsobjekt.

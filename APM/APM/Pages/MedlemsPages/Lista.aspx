@@ -6,20 +6,23 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainHolder" runat="server">
 
 
-     <div id="TitleLabel">
+     <div id="TitleLabellist">
                
              <h1>
        Medlemsregister 
     </h1>
             </div>
 
-    <div id="Selected">
-
-        <!-- Visar text meddelande om man tagit bort medlem  -->
-
+         <!-- Visar text meddelande om man tagit bort medlem  -->
+    <div id="text5">
     <asp:Panel runat="server" ID="SuccessMessagePanel" Visible="false">
         <asp:Literal runat="server" ID="SuccessMessageLiteral" />
+        <asp:Button ID="Button1" CssClass="exit" runat="server" Text="Stäng" OnClientClick="exitbutton_OnClick" />
     </asp:Panel>
+        </div>
+
+    <div id="Selected">
+
 
         <!-- Visar fel medlande -->
     <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
@@ -47,7 +50,9 @@
         <ItemTemplate>
             <dl>
                 <dt id="header">
+              
                     <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl='<%# GetRouteUrl("MemberDetails", new { id = Item.MedID })  %>' Text='<%# Item.Fnamn + " " + Item.Enamn %> ' /></dt>
+
                 <dd id="content1">
                     <%#: Item.Blevmedlem %>
                 </dd>
@@ -58,9 +63,8 @@
         </ItemTemplate>
 
         
-
         <EmptyDataTemplate>
-            <%-- Detta visas då medlemmar saknas i databasen. --%>
+            <!-- Detta visas då medlemmar saknas i databasen. -->
             <p>
                 Medlemmar saknas.
             </p>

@@ -13,14 +13,14 @@ namespace APM.Pages.MedlemsPages
 {
     public partial class Kontaktinfo : System.Web.UI.Page
     {
-        #region Service-objekt
+
 
         private Service _service;
         private Service Service
         {
             get { return _service ?? (_service = new Service()); }
         }
-        #endregion
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -32,8 +32,8 @@ namespace APM.Pages.MedlemsPages
         // får drop down box info
         public IEnumerable<KontaktTyp> KategoriTypeDropDownList_GetData()
         {
-            Service service1 = new Service();
-            return service1.GetKontaktTypes();
+           
+            return Service.GetKontaktTypes();
         }
 
         // lägger till kontaktinfo
@@ -44,10 +44,10 @@ namespace APM.Pages.MedlemsPages
             try
             {
                 K.MedID = id;
-                Service service1 = new Service();
-             service1.AddKontaktInfo(K);
+                Service.AddKontaktInfo(K);
 
              //Laddar om sidan
+                Page.SetTempData("SuccessMessage", "Kontaktinformation har lagts till!!");
              Response.RedirectToRoute("Memberkontakt", false);
              Context.ApplicationInstance.CompleteRequest();
 
@@ -65,8 +65,8 @@ namespace APM.Pages.MedlemsPages
         {
             try
             {
-                Service service1 = new Service();
-                return service1.GetMemberKontaktTinfo(id);
+                
+                return Service.GetMemberKontaktTinfo(id);
             }
             catch (Exception)
             {
@@ -85,10 +85,11 @@ namespace APM.Pages.MedlemsPages
                     try
                     {
                         
-                        Service service2 = new Service();
-                        service2.UpdateKontaktInfo(K);
+                        
+                        Service.UpdateKontaktInfo(K);
 
                         //Laddar om sidan
+                        Page.SetTempData("SuccessMessage", "Kontaktinformation har updaterats!!");
                         Response.RedirectToRoute("Memberkontakt", false);
                         Context.ApplicationInstance.CompleteRequest();
 
@@ -103,14 +104,13 @@ namespace APM.Pages.MedlemsPages
 
         public void kontaktListView_Delete(KontaktTyp K)
         {
-            if (ModelState.IsValid)
-            {
+           
 
                 try
                 {
 
-                    Service service2 = new Service();
-                    service2.DeletKontaktInfo(K);
+                    
+                    Service.DeletKontaktInfo(K);
 
                     //Laddar om sidan
                     Response.RedirectToRoute("Memberkontakt", false);
@@ -122,11 +122,22 @@ namespace APM.Pages.MedlemsPages
                     ModelState.AddModelError(String.Empty, "Fel inträffade då kontak skulle tasbort");
                 }
 
+        }
+
+        //använda för att få MedlemsID till länken som tar oss till baks till medlem
+        public APM.Model.Member MemberFormView_GetItem([RouteData] int id)
+        {
+            try
+            {
+                
+                return Service.GetMember(id);
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError(String.Empty, "Fel inträffade då medlemmen hämtades.");
+                return null;
             }
         }
-    
-
-
 
     }
 }

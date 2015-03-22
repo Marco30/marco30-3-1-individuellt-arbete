@@ -9,18 +9,23 @@
     </h1>
 </div>
 
-     <div id="Selected">
-
+    <div id="text6">
      <!-- Visar text meddelande om att man lag till medlem -->
     <asp:Panel runat="server" ID="SuccessMessagePanel" Visible="false" CssClass="icon-ok">
         <asp:Literal runat="server" ID="SuccessMessageLiteral" />
+        <asp:Button ID="Button1" CssClass="exit" runat="server" Text="Stäng" OnClientClick="exitbutton_OnClick" />
     </asp:Panel>
+        </div>
 
-    <!--Meny länkar-->
-    <div>
+     <!--Meny länkar-->
+    <div id="Meny">
         <asp:HyperLink ID="HyperLink3" CssClass="alinks" runat="server" Text="Hem" NavigateUrl='<%$ RouteUrl:routename=Members %>' />
     </div>
 
+
+     <div id="S1">
+
+   
      <!-- Visar fel medlande visas här -->
     <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
 
@@ -30,12 +35,22 @@
         SelectMethod="MemberFormView_GetItem"
         RenderOuterTable="false">
         <ItemTemplate>
+
             <div class="header">
-                <label for="Name">Namn</label>
+                <label for="Name">Förnamn</label>
             </div>
             <div class="content">
-                <%#: Item.Fnamn + " " + Item.Enamn %>
+                <%#: Item.Fnamn %>
             </div>
+
+                        <div class="header">
+                <label for="Name">Efternamn</label>
+            </div>
+            <div class="content">
+                <%#: Item.Enamn %>
+            </div>
+
+
             <div class="header">
                 <label for="CivicRegistrationNumber">Personnummer</label>
             </div>
@@ -57,20 +72,6 @@
                 <%#: Item.Address %>
             </div>
 
-             <div class="header">
-                <label for="Region">Befattningstyp</label>
-            </div>
-            <div class="content">
-                <%#: Item.Befattningstyp %>
-            </div>
-
-            <div class="header">
-                <label for="ZipCode">Arvode</label>
-            </div>
-            <div class="content">
-                <%#: Item.Arvode %>
-            </div>
-
             <div class="header">
                 <label for="Region">Blevmedlem</label>
             </div>
@@ -82,13 +83,55 @@
             <!--Meny länkar-->
             <div id="slut">
                 <asp:HyperLink ID="HyperLink1" runat="server" Text="Redigera" NavigateUrl='<%# GetRouteUrl("MemberEdit", new { id = Item.MedID }) %>' />
-                <asp:HyperLink ID="HyperLink4" runat="server" Text="Redigera" NavigateUrl='<%# GetRouteUrl("Memberkontakt", new { id = Item.MedID }) %>' />
+                <asp:HyperLink ID="HyperLink4" runat="server" Text="KontaktInfo" NavigateUrl='<%# GetRouteUrl("Memberkontakt", new { id = Item.MedID }) %>' />
                 <asp:HyperLink ID="HyperLink2" runat="server" Text="Ta bort" NavigateUrl='<%# GetRouteUrl("MemberDelete", new { id = Item.MedID }) %>' />
-                <asp:HyperLink ID="HyperLink3" runat="server" Text="Hem" NavigateUrl='<%# GetRouteUrl("Members", null)%>' />
             </div>
               
         </ItemTemplate>
     </asp:FormView>
+
+
+             <!--BID-->
+
+
+    <asp:ListView ID="BefattningListView" runat="server"
+                ItemType="APM.Model.Befattning"
+                DataKeyNames="MedID"
+                SelectMethod="BefattningListView_GetData">
+                
+
+                <LayoutTemplate>
+                    <asp:PlaceHolder ID="itemPlaceholder" runat="server"></asp:PlaceHolder>
+                    
+                </LayoutTemplate>
+
+                <EmptyDataTemplate>
+                    <div id="ingen">
+                        Har ingen kontaktinfo
+                        </div>
+                </EmptyDataTemplate>
+
+               <ItemTemplate>
+
+           
+               <!-- Befattning -->
+                
+                      
+                    <div id="befattning">
+                        <div id="b1">Befattningstyp</div>
+                        <span class="title"><%#: Item.Befattningstyp %> </span>
+                           <dive id="arvode">
+                          <div id="b2">Arvode</div>
+                    <%#: Item.Arvode %> 
+                </dive>
+               
+                    </div>
+
+                        <br />
+
+                     </ItemTemplate>                 
+            </asp:ListView>
+         <!--Slut B-->
 
            </div>
 
@@ -100,7 +143,7 @@
         DataKeyNames="MedID">
 
         <LayoutTemplate>
-            <%-- Platshållare för medlemsaktiviteter --%>
+            <!-- Platshållare för Kontaktuppgifter -->
             <asp:PlaceHolder ID="itemPlaceHolder" runat="server" />
         </LayoutTemplate>
 
@@ -119,13 +162,16 @@
         </ItemTemplate>
 
         <EmptyDataTemplate>
-            <%-- Detta visas då aktiviteter saknas i databasen. --%>
+            <%-- Detta visas då Kontaktuppgifter saknas i databasen --%>
             <p>
-                Medlemsaktivitet saknas.
+                Kontaktuppgifter Saknas.
             </p>
         </EmptyDataTemplate>
     </asp:ListView>
            
    </div>
+
+
+
 
 </asp:Content>

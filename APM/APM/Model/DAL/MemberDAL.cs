@@ -103,10 +103,10 @@ namespace APM.Model.DAL// Marco Villegas
 
                             int ArvodeIndex = reader.GetOrdinal("Arvode");
 
+                            var BtyIDIndex = reader.GetOrdinal("BefattningID");
+
                             var BtyprIndex = reader.GetOrdinal("Befattningstyp");
                             var BMIndex = reader.GetOrdinal("Blevmedlem");
-                            var KontaktIndex = reader.GetOrdinal("Kontaktuppgift");
-                            var KtypIndex = reader.GetOrdinal("Kontakttyp");
 
                             // Returnerar referensen till de skapade Member-objektet.
                             return new Member
@@ -120,9 +120,7 @@ namespace APM.Model.DAL// Marco Villegas
                                 Arvode = reader.GetInt32(ArvodeIndex),
                                 Befattningstyp = reader.GetString(BtyprIndex),
                                 Blevmedlem = reader.GetDateTime(BMIndex).ToString("yyyy-MM-dd"),
-                                Kontaktuppgift = reader.GetString(KontaktIndex),
-                                Kontakttyp = reader.GetString(KtypIndex),
-
+                                BefattningID = reader.GetInt32(BtyIDIndex),
                             };
                         }
                     }
@@ -148,7 +146,7 @@ namespace APM.Model.DAL// Marco Villegas
                 try
                 {
                     // Skapar och initierar ett SqlCommand-objekt som används till att exekveras specifierad lagrad procedur.
-                    SqlCommand cmd = new SqlCommand("appSchema.usp_AddMedlem2", conn); // Den lagrade proceduren lägger in meddlem, kontaktinfo och Befattnings
+                    SqlCommand cmd = new SqlCommand("appSchema.usp_AddMedlem3", conn); // Den lagrade proceduren lägger in meddlem, kontaktinfo och Befattnings
                     cmd.CommandType = CommandType.StoredProcedure;
 
 
@@ -157,9 +155,8 @@ namespace APM.Model.DAL// Marco Villegas
                     cmd.Parameters.Add("@Efternamn", SqlDbType.VarChar, 10).Value = member.Enamn;
                     cmd.Parameters.Add("@Ort", SqlDbType.VarChar, 25).Value = member.Ort;
                     cmd.Parameters.Add("@Gatuadress", SqlDbType.VarChar, 30).Value = member.Address;
-                    cmd.Parameters.Add("@BefattningID", SqlDbType.Int).Value = member.Befattningstyp;
-                    cmd.Parameters.Add("@Kontaktuppgift", SqlDbType.VarChar, 20).Value = member.Kontaktuppgift;
-                    cmd.Parameters.Add("@KontakttypID", SqlDbType.Int).Value = member.Kontakttyp;
+                    cmd.Parameters.Add("@BefattningID", SqlDbType.Int).Value = member.BefattningID;
+         
 
 
                     // Hämtar data från den lagrade proceduren.
@@ -197,40 +194,6 @@ namespace APM.Model.DAL// Marco Villegas
                     // Lägger till den paramter den lagrade proceduren kräver för medlemsid:t.
                     //cmd.Parameters.AddWithValue("@MedlemID", member.MedID);
 
-                    int A = 0;
-
-                    if (member.Befattningstyp == "Ordförande")
-                  {
-                       A = 1;
-                  }
-                    else if (member.Befattningstyp == "Vice ordförande")
-                    {
-                         A = 2;
-                    }
-                    else if (member.Befattningstyp == "Styrelsemedlem")
-                    {
-                       A = 3;
-                    }
-                    else if (member.Befattningstyp == "Medlem")
-                    {
-                       A = 4;
-                    }
-
-                    int B = 0;
-
-                    if (member.Kontakttyp == "Mobil")
-                    {
-                        B = 1;
-                    }
-                    else if (member.Kontakttyp == "Hem")
-                    {
-                        B = 2;
-                    }
-                    else if (member.Kontakttyp == "E-post")
-                    {
-                        B = 3;
-                    }
-                 
 
                     // Lägger till de paramterar den lagrade proceduren kräver.
                     cmd.Parameters.Add("@MedlemID", SqlDbType.Int, 4).Value = member.MedID;
@@ -239,10 +202,8 @@ namespace APM.Model.DAL// Marco Villegas
                     cmd.Parameters.Add("@Efternamn", SqlDbType.VarChar, 10).Value = member.Enamn;
                     cmd.Parameters.Add("@Ort", SqlDbType.VarChar, 25).Value = member.Ort;
                     cmd.Parameters.Add("@Gatuadress", SqlDbType.VarChar, 30).Value = member.Address;
-                    cmd.Parameters.Add("@BefattningID", SqlDbType.Int).Value = A;//member.Befattningstyp;
-                    cmd.Parameters.Add("@Kontaktuppgift", SqlDbType.VarChar, 20).Value = member.Kontaktuppgift;
-                    cmd.Parameters.Add("@KontakttypID", SqlDbType.Int).Value = B;//member.Kontakttyp;
-
+                    cmd.Parameters.Add("@BefattningID", SqlDbType.Int).Value = member.BefattningID;
+            
                     // Öppnar anslutningen till databasen.
                     conn.Open();
 

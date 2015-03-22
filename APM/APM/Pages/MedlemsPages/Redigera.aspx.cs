@@ -49,6 +49,7 @@ namespace APM.Pages.MedlemsPages
                 {
                     // Sparar ett rättmeddelande i en temporär sessionsvariabel och dirigerar användaren till listan med medlemmar.
                     Service.SaveMember(member);
+                    Page.SetTempData("SuccessMessage", "Medlem har Redigerats!!");
                     Response.RedirectToRoute("MemberDetails", new { id = member.MedID });
                     Context.ApplicationInstance.CompleteRequest();
                 }
@@ -59,8 +60,12 @@ namespace APM.Pages.MedlemsPages
             }
         }
 
-       
 
+        public IEnumerable<Befattning> BefattningstypTypeDropDownList_GetData()
+        {
+
+            return Service.GetBefattningTypes();
+        }
         
     }
 }
