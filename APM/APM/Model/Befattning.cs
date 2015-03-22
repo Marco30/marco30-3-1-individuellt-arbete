@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 
-namespace APM.Model
+namespace APM.Model// Marco Villegas
 {
     public class Befattning
     {

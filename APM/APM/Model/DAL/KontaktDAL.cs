@@ -7,7 +7,7 @@ using System.Data;
 
 using APM.Model;
 
-namespace APM.Model.DAL
+namespace APM.Model.DAL// Marco Villegas
 {
     public class KontaktDAL : DALBase
     {
