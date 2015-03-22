@@ -20,6 +20,8 @@ namespace APM// Marco Villegas
             routes.MapPageRoute("MemberDelete", "medlemmar/{id}/tabort", "~/Pages/MedlemsPages/Radera.aspx");
             routes.MapPageRoute("Error", "serverfel", "~/Pages/Delade/Error.html");
             routes.MapPageRoute("Default", "", "~/Pages/MedlemsPages/Lista.aspx");
+            routes.MapPageRoute("Memberkontakt", "medlemmar/{id}/Kontaktinfo", "~/Pages/MedlemsPages/Kontaktinfo.aspx");
+       
         }
     }
 }

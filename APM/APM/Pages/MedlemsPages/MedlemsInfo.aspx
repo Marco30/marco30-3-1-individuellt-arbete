@@ -3,17 +3,28 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainHolder" runat="server">
 
-
+    <div id="TitleLabel">
      <h1>
         Medlem
     </h1>
+</div>
+
+     <div id="Selected">
+
+     <!-- Visar text meddelande om att man lag till medlem -->
     <asp:Panel runat="server" ID="SuccessMessagePanel" Visible="false" CssClass="icon-ok">
         <asp:Literal runat="server" ID="SuccessMessageLiteral" />
     </asp:Panel>
+
+    <!--Meny länkar-->
     <div>
         <asp:HyperLink ID="HyperLink3" CssClass="alinks" runat="server" Text="Hem" NavigateUrl='<%$ RouteUrl:routename=Members %>' />
     </div>
+
+     <!-- Visar fel medlande visas här -->
     <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
+
+    <!-- formview som visar detaljerad medlems information från databasen-->
     <asp:FormView ID="MemberFormView" runat="server"
         ItemType="APM.Model.Member"
         SelectMethod="MemberFormView_GetItem"
@@ -67,29 +78,54 @@
                 <%#: Item.Blevmedlem %>
             </div>
 
-            <div class="header">
-                <label for="ZipCode">Kontaktuppgift</label>
-            </div>
-            <div class="content">
-                <%#: Item.Kontaktuppgift %>
-            </div>
-
-             <div class="header">
-                <label for="ZipCode">Kontakttyp</label>
-            </div>
-            <div class="content">
-                <%#: Item.Kontakttyp %>
-            </div>
-
-
-
-            <div>
+      
+            <!--Meny länkar-->
+            <div id="slut">
                 <asp:HyperLink ID="HyperLink1" runat="server" Text="Redigera" NavigateUrl='<%# GetRouteUrl("MemberEdit", new { id = Item.MedID }) %>' />
+                <asp:HyperLink ID="HyperLink4" runat="server" Text="Redigera" NavigateUrl='<%# GetRouteUrl("Memberkontakt", new { id = Item.MedID }) %>' />
                 <asp:HyperLink ID="HyperLink2" runat="server" Text="Ta bort" NavigateUrl='<%# GetRouteUrl("MemberDelete", new { id = Item.MedID }) %>' />
                 <asp:HyperLink ID="HyperLink3" runat="server" Text="Hem" NavigateUrl='<%# GetRouteUrl("Members", null)%>' />
             </div>
+              
         </ItemTemplate>
     </asp:FormView>
-   
+
+           </div>
+
+         <div id="Selected2">
+
+          <asp:ListView ID="KontaktListVieww" runat="server"
+        ItemType="APM.Model.KontaktTyp"
+        SelectMethod="kontaktListView_GetData"
+        DataKeyNames="MedID">
+
+        <LayoutTemplate>
+            <%-- Platshållare för medlemsaktiviteter --%>
+            <asp:PlaceHolder ID="itemPlaceHolder" runat="server" />
+        </LayoutTemplate>
+
+        <ItemTemplate>
+            <dl>
+                <dt class="header">
+                    <label for="Kontaktuppgifter">Kontaktuppgifter</label>
+                </dt>
+                <dd class="content">
+                    <%#: Item.Kontakttyp %>
+                </dd>
+                <dd class="content">
+                    <%#: Item.Kontaktuppgift  %>
+                </dd>
+            </dl>
+        </ItemTemplate>
+
+        <EmptyDataTemplate>
+            <%-- Detta visas då aktiviteter saknas i databasen. --%>
+            <p>
+                Medlemsaktivitet saknas.
+            </p>
+        </EmptyDataTemplate>
+    </asp:ListView>
+           
+   </div>
 
 </asp:Content>

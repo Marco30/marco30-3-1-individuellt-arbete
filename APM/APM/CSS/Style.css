@@ -68,6 +68,15 @@ line-height: 155px;
 font-family: Verdana;
 }
 
+#slut
+{
+margin: -50px 33px 10px 24px;
+color: #FBF6F6;
+font-size: 32px;
+line-height: 155px;
+font-family: Verdana;
+}
+
 #TitleLabel1
 {
 margin: 56px 82px -131px 137px;
@@ -93,7 +102,20 @@ font-size: 18px;
 line-height: 30px;
 font-family: Verdana;
 height: 395px;
+
+color: #FFF;
 }
+
+#Selected2
+{
+margin: -426px 63px 62px 487px;
+font-size: 18px;
+line-height: 30px;
+font-family: Verdana;
+height: 395px;
+color: #FFF;
+}
+
 #thumbnails
 {
 margin: -116px 54px -2px 32px;
@@ -477,15 +499,11 @@ padding-left: 241px;
 
 
 
-
-
-
-
-
 h1 {
  color: #FEFEFE;
 font-weight: bold;
 font-size: 40px;
+
 }
 
 .alinks
@@ -494,22 +512,27 @@ font-size: 40px;
     font-size:24px;
     font-weight:bold;
     font-family: Verdana;
-margin: 393px 75px 34px 33px;
+margin: -15px 44px -13px 267px;
 
 }
 
 .header {
-    font-weight:bold;
-    font-size:18px;
-    text-decoration:none;
-    color: #333333;
+font-weight: bold;
+font-size: 20px;
+text-decoration: none;
+color: #FFFFFD;
+margin: 9px 50px -17px 57px;
+
 }
 
 .content {
-   color:teal;
+color: #F5C1C1;
+margin: 20px 44px -13px 62px;
+font-size: 14pt;
 }
 
 #MainContentPlaceHolder_SuccessMessagePanel {
     font-size: 40px;
     color:lightgreen;
+    margin: -15px 44px -13px 267px;
 }

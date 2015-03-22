@@ -32,5 +32,22 @@ namespace APM.Pages.MedlemsPages
             }
         }
 
+        public IEnumerable<APM.Model.KontaktTyp> kontaktListView_GetData([RouteData] int id)
+        {
+            try
+            {
+                Service service1 = new Service();
+                return service1.GetMemberKontaktTinfo(id);
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError(String.Empty, "Fel inträffade då medlemmarna skulle hämtas från databasen.");
+                return null;
+            }
+
+        }
+
+
+
     }
 }

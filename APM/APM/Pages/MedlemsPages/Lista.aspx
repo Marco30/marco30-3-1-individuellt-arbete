@@ -15,16 +15,23 @@
 
     <div id="Selected">
 
+        <!-- Visar text meddelande om man tagit bort medlem  -->
+
     <asp:Panel runat="server" ID="SuccessMessagePanel" Visible="false">
         <asp:Literal runat="server" ID="SuccessMessageLiteral" />
     </asp:Panel>
+
+        <!-- Visar fel medlande -->
     <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
+
+        <!--Meny länkar-->
     <div>
         <asp:HyperLink ID="HyperLink3" CssClass="alinks" runat="server" Text="Hem" NavigateUrl='<%$ RouteUrl:routename=Members %>' />
         <asp:HyperLink ID="HyperLink1" CssClass="alinks" runat="server" NavigateUrl='<%$ RouteUrl:routename=MemberCreate %>' Text="Lägg till ny medlem" />
 
     </div>
 
+        <!-- listeview som visar alla medlemar i databasen-->
     <asp:ListView ID="MemberListView" runat="server"
         ItemType="APM.Model.Member"
         SelectMethod="MemberListView_GetData"

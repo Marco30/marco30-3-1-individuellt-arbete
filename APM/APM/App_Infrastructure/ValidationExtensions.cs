@@ -6,9 +6,9 @@ using System.Web;
 
 namespace APM.App_Infrastructure// Marco Villegas
 {
-    public static class ValidationExtensions
+    public static class ValidationExtensions// Valideringsklass
     {
-        public static bool Validate<T>(this T instance, out ICollection<ValidationResult> validationResults)
+        public static bool Validate<T>(this T instance, out ICollection<ValidationResult> validationResults)// Utökning av klassen objekt för direktvalidering
         {
             var validationContext = new ValidationContext(instance);
             validationResults = new List<ValidationResult>();

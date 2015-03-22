@@ -41,8 +41,7 @@ namespace APM.Model// Marco Villegas
         public string Kontakttyp { get; set; }
         public string Befattningstyp { get; set; }
         public string Blevmedlem { get; set; }
-    
-          public string BefattningstypEdit{ get; set; }
+
 
     }
 

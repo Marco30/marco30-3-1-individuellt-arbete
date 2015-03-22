@@ -14,7 +14,9 @@ namespace APM.Model// Marco Villegas
         // Privata fält
         private MemberDAL _memberDAL;
 
+        private KontaktDAL _kontaktDAL;
 
+        private BefattningDAL _befattningDAL;
    
         private MemberDAL MemberDAL// Egenskaper som skapar DAL-klasser om det inte redan finns någora.
         {
@@ -22,8 +24,18 @@ namespace APM.Model// Marco Villegas
         }
 
 
-     
+        private KontaktDAL KontaktDAL
+        {
+            //Om contactdal är null gör det till höger om ??
+            get { return _kontaktDAL ?? (_kontaktDAL = new KontaktDAL()); }
+        }
 
+        private BefattningDAL BefattningDAL
+        {
+            //Om contactdal är null gör det till höger om ??
+            get { return _befattningDAL ?? (_befattningDAL = new BefattningDAL()); }
+        }
+     
 
         public void DeleteMember(int memberId)// Tar bort spesifik medlem ur databasen.
         {
@@ -65,6 +77,63 @@ namespace APM.Model// Marco Villegas
             return MemberDAL.GetMembers();
         }
 
+        //Hämtar alla kontakttyper returnernar ett List objekt innehållande referenser till ContactType objekt.
+        public IEnumerable<KontaktTyp> GetKontaktTypes(bool refresh = false)
+        {
+            // Försöker hämta lista med kontakttyper från cachen.
+            var kategoriTypes = HttpContext.Current.Cache["KategoriTypes"] as IEnumerable<KontaktTyp>;
+
+            // Om det inte finns det en lista med kontakttyper
+            if (kategoriTypes == null || refresh)
+            {
+                // ...hämtar då lista med kontakttyper
+                kategoriTypes = KontaktDAL.GetKontakter();
+
+                // ...och cachar dessa. List-objektet, inklusive alla ContactType-objekt, kommer att cachas 
+                // under 5 minuter, varefter de automatiskt avallokeras från webbserverns primärminne.
+                HttpContext.Current.Cache.Insert("KategoriTypes", kategoriTypes, null, DateTime.Now.AddMinutes(5), TimeSpan.Zero);
+            }
+
+            // Returnerar listan med kontakttyper.
+            return kategoriTypes;
+        }
+
+
+        //Hämtar alla kontakttyper returnernar ett List objekt innehållande referenser till BefattningTypes objekt.
+        public IEnumerable<Befattning> GetBefattningTypes(bool refresh = false)
+        {
+            // Försöker hämta lista med BefattningTyper från cachen.
+            var BefattningTypes = HttpContext.Current.Cache["BefattningTypes"] as IEnumerable<Befattning>;
+
+            // Om det inte finns det en lista med BefattningTyper 
+            if (BefattningTypes == null || refresh)
+            {
+                // ...hämtar då lista med BefattningTyper 
+                BefattningTypes = BefattningDAL.GetallaBefattning();
+
+                // ...och cachar dessa. List-objektet, inklusive alla BefattningTyper -objekt, kommer att cachas 
+                // under 5 minuter, varefter de automatiskt avallokeras från webbserverns primärminne.
+                HttpContext.Current.Cache.Insert("BefattningTypes", BefattningTypes, null, DateTime.Now.AddMinutes(5), TimeSpan.Zero);
+            }
+
+            // Returnerar listan med kontakttyper.
+            return BefattningTypes;
+        }
+
+        public IEnumerable<KontaktTyp> GetMemberKontaktTinfo(int memberId)
+        {
+            return KontaktDAL.GetMemberKontaktInfoById(memberId);
+        }
+
+        public void AddKontaktInfo(KontaktTyp K)
+        {
+            KontaktDAL.AddKontaktInfoById(K);
+        }
+
+        public void UpdateKontaktInfo(KontaktTyp K)
+        {
+            KontaktDAL.UpdateKontaktInfoById(K);
+        }
    
     }
 

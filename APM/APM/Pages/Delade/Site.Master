@@ -6,10 +6,10 @@
 <head runat="server">
     <title>
         <asp:ContentPlaceHolder ID="TitleHolder" runat="server">
-           <h1>Active Power Movement</h1>
+          Active Power Movement
         </asp:ContentPlaceHolder>
     </title>
-    <link href="css/Style.css" rel="stylesheet" media="screen" //>
+   <link href="~/css/Style.css" rel="stylesheet" type="text/css" media="screen" runat="server" /> <!-- fixat Css så att den fnukar på alla sidor -->
 </head>
 <body>
     <form id="form1" runat="server">

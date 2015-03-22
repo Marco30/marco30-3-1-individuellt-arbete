@@ -12,10 +12,18 @@
     </h1>
             </div>
 
+    <div id="Selected">
+
+        <!--Meny länkar-->
     <div>
         <asp:HyperLink ID="HyperLink3" CssClass="alinks" runat="server" Text="Hem" NavigateUrl='<%$ RouteUrl:routename=Members %>' />
     </div>
+
+        <!-- Visar fel medlande visas här -->
     <asp:ValidationSummary ID="ValidationSummary1" runat="server" HeaderText="Ett fel har inträffat. Korrigera felet och försök igen." />
+
+        
+    <!-- formview som visar formulär-->
     <asp:FormView ID="MemberFormView" runat="server"
         ItemType="APM.Model.Member"
         DefaultMode="Insert"
@@ -79,15 +87,15 @@
                     Display="None"></asp:RequiredFieldValidator>
             </div>
 
-            <div>
-                <label for="DropDownList2">Kontakttyp</label>
-            </div>
 
-            <asp:DropDownList ID="DropDownList2" runat="server" SelectedValue='<%# BindItem.Kontakttyp %>'>
-            <asp:ListItem Text="Mobil" Value="1"></asp:ListItem>
-                <asp:ListItem Text="Hem" Value="2"></asp:ListItem>
-                <asp:ListItem Text="E-post" Value="3"></asp:ListItem>
-            </asp:DropDownList>
+            <div><!-- Dropdownlist Kontakttyp -->
+                <label for="AddTypeDropDownList">Kontakttyp</label>
+                </div>
+                <asp:DropDownList ID="AddTypeDropDownList" runat="server"                    
+                    SelectMethod="KategoriTypeDropDownList_GetData"
+                    DataTextField="Kontakttyp"
+                    DataValueField="KontakttypID"
+                    SelectedValue='<%# BindItem.Kontakttyp %>'/>
 
 
 
@@ -103,22 +111,22 @@
                     Display="None"></asp:RequiredFieldValidator>
             </div>
 
-             <div>
-                <label for="DropDownList1">Befattningstyp</label>
-            </div>
 
  
+               <div><!-- Dropdownlist Befattningstyp -->
+                <label for="AddTypeDropDownList">Befattningstyp</label>
+                </div>
+                <asp:DropDownList ID="DropDownList2" runat="server"                    
+                    SelectMethod="BefattningstypTypeDropDownList_GetData"
+                    DataTextField="Befattningstyp"
+                    DataValueField="BefattningID"
+                    SelectedValue='<%# BindItem.Befattningstyp %>'/>
 
-            <asp:DropDownList ID="DropDownList1" runat="server" SelectedValue='<%# BindItem.Befattningstyp %>'>
-                <asp:ListItem Text="Ordförande" Value="1"></asp:ListItem>
-                <asp:ListItem Text="Vice ordförande" Value="2"></asp:ListItem>
-                <asp:ListItem Text="Styrelsemedlem" Value="3"></asp:ListItem>
-                <asp:ListItem Text="Medlem" Value="4"></asp:ListItem>
-            </asp:DropDownList>
+
     
            
             <div>
-                <!-- "Kommandknappar" för att skapa ny kontaktuppgift och rensa texfälten om amn avrbryte -->
+                <!-- "Kommandknappar" för att skapa ny kontaktuppgift och rensa texfälten om man vill avrbryte -->
                 <asp:LinkButton ID="LinkButton3" runat="server" CommandName="Insert" Text="Lägg till" />
                 <asp:LinkButton ID="LinkButton4" runat="server" CommandName="Cancel" Text="Rensa" CausesValidation="false" />
                 <asp:HyperLink ID="HyperLink1" runat="server" Text="Avbryt" NavigateUrl='<%# GetRouteUrl("Members", null) %>' />
@@ -126,5 +134,6 @@
         </InsertItemTemplate>
     </asp:FormView>
 
+        </div>
 
 </asp:Content>

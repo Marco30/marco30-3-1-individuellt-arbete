@@ -21,7 +21,7 @@ namespace APM.Pages.MedlemsPages
                     service.SaveMember(member);
 
                     // Sparar ett rättmeddelande i en temporär sessionsvariabel och dirigerar användaren till medlemsinfo
-                    Page.SetTempData("SuccessMessage", "Skapandet av den nya medlemmen lyckades!");
+                    Page.SetTempData("SuccessMessage", " nya medlemmen lass till!!");
                     Response.RedirectToRoute("MemberDetails", new { id = member.MedID });
                     Context.ApplicationInstance.CompleteRequest();
                 }
@@ -30,6 +30,24 @@ namespace APM.Pages.MedlemsPages
                     ModelState.AddModelError(String.Empty, "Ett fel inträffade då medlemmen skulle läggas till.");
                 }
             }
+
         }
+
+
+        public IEnumerable<KontaktTyp> KategoriTypeDropDownList_GetData()
+        {
+            Service service1 = new Service();
+            return service1.GetKontaktTypes();
+        }
+
+
+
+        public IEnumerable<Befattning> BefattningstypTypeDropDownList_GetData()
+        {
+            Service service2 = new Service();
+            return service2.GetBefattningTypes();
+        }
+
     }
+
 }

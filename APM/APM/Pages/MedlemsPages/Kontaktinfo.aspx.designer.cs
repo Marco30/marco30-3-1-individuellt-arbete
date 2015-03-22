@@ -10,7 +10,7 @@
 namespace APM.Pages.MedlemsPages {
     
     
-    public partial class MedlemsInfo {
+    public partial class Kontaktinfo {
         
         /// <summary>
         /// SuccessMessagePanel control.
@@ -31,13 +31,13 @@ namespace APM.Pages.MedlemsPages {
         protected global::System.Web.UI.WebControls.Literal SuccessMessageLiteral;
         
         /// <summary>
-        /// HyperLink3 control.
+        /// InstrumentFormView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink3;
+        protected global::System.Web.UI.WebControls.FormView InstrumentFormView;
         
         /// <summary>
         /// ValidationSummary1 control.
@@ -49,21 +49,30 @@ namespace APM.Pages.MedlemsPages {
         protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
         
         /// <summary>
-        /// MemberFormView control.
+        /// ValidationSummary2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FormView MemberFormView;
+        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary2;
         
         /// <summary>
-        /// KontaktListVieww control.
+        /// kontaktListView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView KontaktListVieww;
+        protected global::System.Web.UI.WebControls.ListView kontaktListView;
+        
+        /// <summary>
+        /// HyperLink2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink2;
     }
 }
