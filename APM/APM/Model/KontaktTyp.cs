@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace APM.Model
+namespace APM.Model// Marco Villegas
 {
     public class KontaktTyp
     {
